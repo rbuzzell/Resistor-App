@@ -7,9 +7,7 @@
 #include <string>
 using namespace std;
 
-int main ()
-{
-	//Variables related to exact color
+//Variables related to exact color
 	const int black = 0;
 	const int brown = 1;
 	const int red = 2;
@@ -21,7 +19,13 @@ int main ()
 	const int grey = 8;
 	const int white = 9;
 	
-	
+
+
+void bandCheck (string);
+int main ()
+{
+
+		
 	/*Variables related to fault tolerence
 	const int brown2 = .01;
 	const int red2 = .02;
@@ -35,6 +39,20 @@ int main ()
 	string color2;	//The user input for band 2
 	string color3;	//The user input for band 3
 	string color4;	//The user input for band 4
+	
+	//Output constants
+	const string BAND_ONE_INPUT   = "Enter the color of the first band";
+	const string BAND_TWO_INPUT   = "Enter the color of the second band";
+	const string BAND_THREE_INPUT = "Enter the color of the third band";
+	const string BAND_FOUR_INPUT  = "Enter the color of the fourth band";
+	const string WARNING_MESSAGE  = "This program only accepts input in all lower case. Also, for clarification, the purple/violet band is violet";
+	const string ERROR_MESSAGE    = "Not a valid input, please try again.";
+	const string BAND_ONE_OUTPUT  = "The value for band one is: ";
+	const string BAND_TWO_OUTPUT  = "The value for band two is: ";
+	const string BAND_THREE_OUTPUT= "The value for band three is: ";
+	const string BAND_FOUR_OUTPUT = "The value for band four is: ";
+	const string TOTAL_VALUE      = "The total of the resistor is ";
+	const string TOTAL_VALUE_2    = " ohms.";
 
 	//Strings for the math
 	double band1 = 1234;	//The numeric value for band 1
@@ -43,22 +61,26 @@ int main ()
 	double band4 = 0;	//the numeric value for band 4
 	double total = 0;	//the numeric value for the total resistacne in the resistor
 
-	//Get the color bands from the user
-	cout << "Enter the colors on the color band in order. Program will accept the following format 'color'" << endl;
-	cout <<"Enter the color of the first band: " << endl;
+	/*Get the color bands from the user
+	cout << WARNING_MESSAGE << endl;
+	cout << BAND_ONE_INPUT  << endl;
 	cin >> color1;
-	cout << "Enter the color of the second band: " <<  endl;
+	cout << BAND_TWO_INPUT <<  endl;
 	cin >> color2;
-	cout << "Enter the color of the third band: " << endl;
+	cout << BAND_THREE_INPUT << endl;
 	cin >> color3;
-	cout << "Enter the color of the fouth band: " << endl;
+	cout << BAND_FOUR_INPUT << endl;
 	cin >> color4;
 	cin.ignore (1000, '\n');
+	*/
 	//error check
-	cout << endl <<	endl << "Error Check" << color1 << endl << color2 << endl << color3 << endl << color4 << endl;
+	cout << endl <<	endl << "Error Check: " << endl << color1 << endl << color2 << endl << color3 << endl << color4 << endl;
 
 	//To define values for each band
-	do
+	cout << WARNING_MESSAGE << endl << BAND_ONE_INPUT << endl;
+	cin >> color1;
+	bandCheck(color1);
+	/*do
 	{
 		if (color1 == "black")
 		{
@@ -108,7 +130,7 @@ int main ()
 		cout <<"Enter the color of the first band: " << endl;
 		cin >> color1;
 		}
-	}
+	}*/
 	while (band1 == 1234);
 
 	do
@@ -250,4 +272,30 @@ int main ()
 	cout << "The multiplier for band 3 is: " << band3 <<endl;
 	cout << "The total resistance of the resistor is: " << total <<endl;
 	return (0);
+}
+
+void bandCheck(string colorIn)
+{
+	int color = 0;
+	if (colorIn == "brown")
+		color = brown;
+	else if (colorIn == "black")
+		color = black;
+	else if (colorIn == "red")
+		color = red;
+	else if (colorIn == "orange")
+		color = orange;
+	else if (colorIn == "yellow")
+		color = yellow;
+	else if (colorIn == "green")
+		color = green;
+	else if (colorIn == "blue")
+		color = blue;
+ 	else if (colorIn == "violet")
+		color = violet;
+	else if (colorIn == "grey")
+		color = grey;
+	else if (colorIn == "white")
+		color = white;
+return color;
 }

@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 
-//Variables related to exact color
+// Global variables related to exact color
 	const int black = 0;
 	const int brown = 1;
 	const int red = 2;
@@ -18,10 +18,11 @@ using namespace std;
 	const int violet = 7;
 	const int grey = 8;
 	const int white = 9;
+	const int fail = -99;
 	
 
 
-void bandCheck (string);
+int bandCheck (string);
 int main ()
 {
 
@@ -61,180 +62,32 @@ int main ()
 	double band4 = 0;	//the numeric value for band 4
 	double total = 0;	//the numeric value for the total resistacne in the resistor
 
-	/*Get the color bands from the user
-	cout << WARNING_MESSAGE << endl;
-	cout << BAND_ONE_INPUT  << endl;
+	//To define values for each band
+	do
+	{
+	cout << WARNING_MESSAGE << endl << endl << BAND_ONE_INPUT << endl;
 	cin >> color1;
-	cout << BAND_TWO_INPUT <<  endl;
+	band1 = bandCheck(color1);
+	}while (band1 == -99);
+
+	do
+	{
+	cout << BAND_TWO_INPUT << endl;
 	cin >> color2;
+	band2 = bandCheck(color2);
+	}while (band2 == -99);
+	
+	do
+	{
 	cout << BAND_THREE_INPUT << endl;
 	cin >> color3;
+	band3 = bandCheck(color3);
+	}
+	while (band3 == -99);
+
 	cout << BAND_FOUR_INPUT << endl;
 	cin >> color4;
-	cin.ignore (1000, '\n');
-	*/
-	//error check
-	cout << endl <<	endl << "Error Check: " << endl << color1 << endl << color2 << endl << color3 << endl << color4 << endl;
-
-	//To define values for each band
-	cout << WARNING_MESSAGE << endl << BAND_ONE_INPUT << endl;
-	cin >> color1;
-	bandCheck(color1);
-	/*do
-	{
-		if (color1 == "black")
-		{
-			band1 = 0;
-		}
-		else if (color1 == "brown")
-		{
-		band1 = 1;
-		}
-		else if (color1 == "red")
-		{
-		band1 = 2;
-		}
-		else if (color1 == "orange")
-		{
-		band1 = 3;
-		}
-		else if (color1 =="yellow")
-		{
-		band1 = 4;
-		}
-		else if (color1 == "green")
-		{
-		band1 = 5;
-		}
-		else if (color1 == "blue")
-		{
-		band1 = 6;
-		}
-		else if (color1 == "violet")
-		{
-		band1 = 7;
-		}
-		else if (color1 == "grey")
-		{
-		band1 = 8;
-		}
-		else if (color1 == "white")
-		{
-		band1 = 9;
-		}
-		else
-		{
-		band1 = 1234; //sets a failure condition
-		cout << "ERROR! must be in all lowercase. Also the purple one has to be entered as violet" << endl;
-		cout << "Enter the colors on the color band in order. Program will accept the following format 'color'" << endl;
-		cout <<"Enter the color of the first band: " << endl;
-		cin >> color1;
-		}
-	}*/
-	while (band1 == 1234);
-
-	do
-	{
-		if (color2 == "black")
-		{
-			band2 = 0;
-		}
-		else if (color2 == "brown")
-		{
-		band2 = 1;
-		}
-		else if (color2 == "red")
-		{
-		band2 = 2;
-		}
-		else if (color2 == "orange")
-		{
-		band2 = 3;
-		}
-		else if (color2 =="yellow")
-		{
-		band2 = 4;
-		}
-		else if (color2 == "green")
-		{
-		band2 = 5;
-		}
-		else if (color2 == "blue")
-		{
-		band2 = 6;
-		}
-		else if (color2 == "violet")
-		{
-		band2 = 7;
-		}
-		else if (color2 == "grey")
-		{
-		band2 = 8;
-		}
-		else if (color2 == "white")
-		{
-		band2 = 9;
-		}
-		else
-		{
-		band2 = 1234;
-		cout << "ERROR! must be in all lowercase. Also the purple one has to be entered as violet" << endl;
-		cout <<"Enter the color of the second band: " << endl;
-		cin >> color2;
-		}
-	}
-	while (band2 == 1234);
-	do
-	{
-		if (color3 == "black")
-		{
-			band3 = 1;
-		}
-		else if (color3 == "brown")
-		{
-		band3 = 10;
-		}
-		else if (color3 == "red")
-		{
-		band3 = 100;
-		}
-		else if (color3 == "orange")
-		{
-		band3 = 1000;
-		}
-		else if (color3 =="yellow")
-		{
-		band3 = 10000;
-		}
-		else if (color3 == "green")
-		{
-		band3 = 10000;
-		}
-		else if (color3 == "blue")
-		{
-		band3 = 1000000;
-		}
-		else if (color3 == "violet")
-		{
-		band3 = 1000000;
-		}
-		else if (color3 == "grey")
-		{
-		band3 = 100000000;
-		}
-		else if (color3 == "white")
-		{
-		band3 = 1000000000;
-		}
-		else
-		{
-		band3 = 1234;
-		cout << "ERROR! must be in all lowercase. Also the purple one has to be entered as violet" << endl;
-		cout <<"Enter the color of the third band: " << endl;
-		cin >> color3;
-		}
-	}while (band3 == 1234);
-
+	
 	do
 	{
 		if (color4 == "brown")
@@ -274,7 +127,8 @@ int main ()
 	return (0);
 }
 
-void bandCheck(string colorIn)
+
+int bandCheck(string colorIn)
 {
 	int color = 0;
 	if (colorIn == "brown")
@@ -297,5 +151,36 @@ void bandCheck(string colorIn)
 		color = grey;
 	else if (colorIn == "white")
 		color = white;
+	else 
+		color = fail;
 return color;
 }
+
+int bandCheck3rd(int band3)
+{
+	int value;
+	if (band3 == 0)
+	value = 1;
+	else if (band3 == 1)
+	value = 10;
+	else if (band3 == 2)
+	value = 100;
+	else if (band3 == 3)
+	value = 1000;
+	else if (band3 == 4)
+	value = 10000;
+	else if (band3 == 5)
+	value = 100000;
+	else if (band3 == 6)
+	value = 1000000;
+	else if (band3 == 7)
+	value = 10000000;
+	else if (band3 == 8)
+	value = 100000000;
+	else if (band3 == 9)
+	value = 1000000000;
+return value;
+}
+
+
+

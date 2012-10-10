@@ -21,7 +21,7 @@ using namespace std;
 	const int fail = -99;
 	
 
-
+int bandCheck3rd (int);
 int bandCheck (string);
 int main ()
 {
@@ -63,32 +63,34 @@ int main ()
 	double total = 0;	//the numeric value for the total resistacne in the resistor
 
 	//To define values for each band
-	do
+	do	//band 1
 	{
 	cout << WARNING_MESSAGE << endl << endl << BAND_ONE_INPUT << endl;
 	cin >> color1;
 	band1 = bandCheck(color1);
 	}while (band1 == -99);
 
-	do
+	do	//band 2
 	{
 	cout << BAND_TWO_INPUT << endl;
 	cin >> color2;
 	band2 = bandCheck(color2);
 	}while (band2 == -99);
 	
-	do
+	do	//band 3
 	{
 	cout << BAND_THREE_INPUT << endl;
 	cin >> color3;
 	band3 = bandCheck(color3);
 	}
 	while (band3 == -99);
-
+	band3 = bandCheck3rd(band3);	//set multiplier for band 3
+	
+	//band 4
 	cout << BAND_FOUR_INPUT << endl;
 	cin >> color4;
 	
-	do
+	do	//band 4. still not a function, but not nessecary at the point.
 	{
 		if (color4 == "brown")
 		{
@@ -181,6 +183,3 @@ int bandCheck3rd(int band3)
 	value = 1000000000;
 return value;
 }
-
-
-

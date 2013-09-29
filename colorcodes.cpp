@@ -8,6 +8,7 @@
 using namespace std;
 
 int bandValue(string, bool);
+string getInput(int);
 int main ()
 {
 	//Strings related to user input
@@ -24,58 +25,80 @@ int main ()
 	double total = 0;	//the numeric value for the total resistance in the resistor
 
 	//Get the color bands from the user
-	cout << "Enter the colors on the color band in order. Program will accept the following format 'color'" << endl;
-	cout <<"Enter the color of the first band: " << endl;
-	cin >> color1;
-	cout << "Enter the color of the second band: " <<  endl;
-	cin >> color2;
-	cout << "Enter the color of the third band: " << endl;
-	cin >> color3;
-	cout << "Enter the color of the fourth band: " << endl;
-	cin >> color4;
-	cin.ignore (1000, '\n');
-    band1 = bandValue(color1, false);
-    band2 = bandValue(color2, false);
-    band3 = bandValue(color3, true);
+	cout << "Enter the colors on the color band in order." << endl;
+    band1 = bandValue(getInput(1), false);
+    band2 = bandValue(getInput(2), false);
+    band3 = bandValue(getInput(3), true);
 	//The Math Section
 
 	total = band1 * band3 + band2 * (band3 /10); //To calculate the total resistance of the resistor
 
 	//The output section
-	cout << fixed << setprecision (0) << setw (13) <<endl;
-	cout << "The corresponding number for band 1 is: " << band1 <<endl;
-	cout << "The corresponding number for band 2 is: " << band2 <<endl;
-	cout << "The multiplier for band 3 is: " << band3 <<endl;
-	cout << "The total resistance of the resistor is: " << total <<endl;
+	cout << fixed << setprecision (0) << setw (13) << endl;
+	cout << "The corresponding number for band 1 is: " << band1 << endl;
+	cout << "The corresponding number for band 2 is: " << band2 << endl;
+	cout << "The multiplier for band 3 is: " << band3 << endl;
+	cout << "The total resistance of the resistor is: " << total << "\u03A9" << endl;
 	return 0;
 }
+
+string getInput(int bandNumber){
+    string bandColor;
+    double bandIntValue;
+    if (bandNumber == 1){
+            cout << "Enter the color of band one: ";
+            getline(cin, bandColor);
+            for(int x = 0; x < bandColor.length(); x++){
+                bandColor[x] = tolower(bandColor[x]);
+            }
+            return bandColor;
+        }else if(bandNumber == 2){
+            cout << "Enter the value of band two: ";
+            getline(cin, bandColor);
+            for(int x = 0; x < bandColor.length(); x++){
+                bandColor[x] = tolower(bandColor[x]);
+            }
+            return bandColor;
+        }else if(bandNumber == 3){
+            cout << "Enter the value of band three: ";
+            getline(cin, bandColor);
+            for(int x = 0; x < bandColor.length(); x++){
+                bandColor[x] = tolower(bandColor[x]);
+            }
+
+            return bandColor;
+        }
+
+    }
+
 
 int bandValue(string color, bool thirdBand){
 
     int value =  0;
     if (thirdBand == false){
-    if (color == "black")
-        value = 0;
+        if (color == "black")
+            value = 0;
         else if(color == "brown")
-           value = 1;
-            else if(color == "red")
-                value = 2;
-                else if(color == "orange")
-                    value = 3;
-                    else if(color == "yellow")
-                        value = 4;
-                        else if(color == "green")
-                            value = 5;
-                            else if(color == "blue")
-                                value = 6;
-                                else if(color == "violet" || color == "purple")
-                                    value == 7;
-                                    else if(color == "grey" || color == "gray")
-                                        value == 8;
-                                        else if(color == "white")
-                                            value == 9;
+            value = 1;
+        else if(color == "red")
+            value = 2;
+        else if(color == "orange")
+            value = 3;
+        else if(color == "yellow")
+            value = 4;
+        else if(color == "green")
+            value = 5;
+        else if(color == "blue")
+            value = 6;
+        else if(color == "violet" || color == "purple")
+            value == 7;
+        else if(color == "grey" || color == "gray")
+            value == 8;
+        else if(color == "white")
+            value == 9;
     }
-    else {
+    if (thirdBand == true) {
+        cout << "I Make it here";
         if(color == "black")
             value = 1;
         else if(color == "brown")
@@ -87,7 +110,7 @@ int bandValue(string color, bool thirdBand){
         else if(color == "yellow")
             value = 10000;
         else if(color == "green")
-            value == 100000;
+            value = 100000;
         else if(color == "blue")
             value = 1000000;
         else if(color == "violet" || color == "purple")

@@ -1,6 +1,7 @@
-//Program to calculate the color code of resistors.
-//Ryan Buzzell
-//10-02-2012
+/*Program to calculate the color code of resistors.
+ *Ryan Buzzell
+ *10-02-2012
+ */
 
 #include <iomanip>
 #include <iostream>
@@ -26,9 +27,9 @@ int main ()
 
 	//Get the color bands from the user
 	cout << "Enter the colors on the color band in order." << endl;
-    band1 = bandValue(getInput(1), false);
-    band2 = bandValue(getInput(2), false);
-    band3 = bandValue(getInput(3), true);
+	band1 = bandValue(getInput(1), false);
+	band2 = bandValue(getInput(2), false);
+	band3 = bandValue(getInput(3), true);
 	//The Math Section
 
 	total = band1 * band3 + band2 * (band3 /10); //To calculate the total resistance of the resistor
